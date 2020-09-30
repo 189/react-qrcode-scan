@@ -1,0 +1,33 @@
+{
+  "name": "react-qrcode-scan",
+  "version": "1.0.0",
+  "description": "React componnent for scan qrcode",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/189/react-qrcode-scan.git"
+  },
+  "keywords": [],
+  "author": "189 <kv.wang87@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/189/react-qrcode-scan/issues"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "dependencies": {
+    "fsm-as-promised": "^0.13.0",
+    "tslint": "^6.0.0",
+    "typescript": "^3.8.2",
+    "visibilityjs": "^1.2.3",
+    "webrtc-adapter": "^1.4.0"
+  },
+  "typings": "lib/index.d.ts",
+  "homepage": "https://github.com/189/react-qrcode-scan#readme"
+}

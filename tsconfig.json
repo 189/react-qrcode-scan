@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUnusedParameters": true,
+		"noUnusedLocals": true,
+		"strictNullChecks": true,
+		"declaration": true,
+		"sourceMap": false,
+		"target": "es6",
+		"outDir": "./lib"
+	},
+	"include": [
+		"src/*.ts",
+        "lib.d.ts",
+        "types/*.d.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}
