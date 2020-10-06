@@ -1,24 +1,29 @@
-function cameraName(label) {
-  let clean = label.replace(/\s*\([0-9a-f]+(:[0-9a-f]+)?\)\s*$/, '');
+function cameraName(label: string | null) {
+  let clean = label ? label.replace(/\s*\([0-9a-f]+(:[0-9a-f]+)?\)\s*$/, "") : "";
   return clean || label || null;
 }
 
 class MediaError extends Error {
-  constructor(type) {
+  type: string;
+  constructor(type: string) {
     super(`Cannot access video stream (${type}).`);
     this.type = type;
   }
 }
 
 class Camera {
-  constructor(id, name) {
+  id: string;
+  name: string | null;
+  _stream: any;
+
+  constructor(id: string, name: string | null) {
     this.id = id;
     this.name = name;
     this._stream = null;
   }
 
   async start() {
-    let constraints = {
+    let constraints: any = {
       audio: false,
       video: {
         mandatory: {
@@ -50,15 +55,18 @@ class Camera {
     this._stream = null;
   }
 
-  static async getCameras() {
+  static async getCameras(): Promise<Camera[]> {
     await this._ensureAccess();
-
-    let devices = await navigator.mediaDevices.enumerateDevices();
-    return devices
-      .filter(d => d.kind === 'videoinput')
-      .map(d => new Camera(d.deviceId, cameraName(d.label)));
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/enumerateDevices
+    let devices: MediaDeviceInfo[] = await navigator.mediaDevices.enumerateDevices();
+    devices = devices.filter(d => d.kind === "videoinput");
+    if (devices) {
+      return devices.map(d => new Camera(d.deviceId, cameraName(d.label)));
+    }
+    return [];
   }
 
+  // Stop all video stream and prepare recording2
   static async _ensureAccess() {
     return await this._wrapErrors(async () => {
       let access = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -68,7 +76,7 @@ class Camera {
     });
   }
 
-  static async _wrapErrors(fn) {
+  static async _wrapErrors(fn: any) {
     try {
       return await fn();
     } catch (e) {
@@ -81,4 +89,4 @@ class Camera {
   }
 }
 
-module.exports = Camera;
+export default Camera;
