@@ -1,23 +1,31 @@
 {
+	// https://www.tslang.cn/docs/handbook/compiler-options.html
 	"compilerOptions": {
+		"moduleResolution": "node",
+		"jsx": "react",
+		"target": "es5",
+		"allowJs": false,
+		"allowUnreachableCode": true,
 		"module": "commonjs",
-		"noImplicitAny": true,
-		"noImplicitReturns": true,
-		"noImplicitThis": true,
-		"noUnusedParameters": true,
+		"experimentalDecorators": true,
+		// 在表达式和声明上有隐含的 any类型时报错。
+		"noImplicitAny": false,
+		// 删除所有注释，除了以 /!*开头的版权信息。
+		"removeComments": true,
+		// 解析非相对模块名的基准目录
+		"baseUrl": "./src",
+		"outDir": "./lib",
+		"strictNullChecks": false,
+		// 禁止有局部变量未使用
 		"noUnusedLocals": true,
-		"strictNullChecks": true,
-		"declaration": true,
-		"sourceMap": false,
-		"target": "es6",
-		"outDir": "./lib"
+		// 禁止有参数未使用
+		"noUnusedParameters": true,
+		// 要包含的类型声明文件路径列表
+		"typeRoots": ["node_modules/@types", "./types/**.d.ts"],
+		"skipLibCheck": true,
+		// 生成相应的 .d.ts文件。
+		"declaration": true
 	},
-	"include": [
-		"src/*.ts",
-        "lib.d.ts",
-        "types/*.d.ts"
-	],
-	"exclude": [
-		"node_modules"
-	]
+	"include": ["./src/**/*.ts", "./src/**/*.tsx", "./types/**.d.ts"],
+	"exclude": ["./node_modules/", "lib", "dist"]
 }

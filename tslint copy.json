@@ -1,0 +1,22 @@
+{
+	"extends": "@ezbuy/tslint-config-ezbuy",
+	"linterOptions": {
+		"exclude": ["./lib/**/**", "./dist/**/**", "./node_modules/**/**", "./src/services/**/*"]
+	},
+	"rules": {
+		"ordered-imports": false,
+		"no-empty": false,
+		"indent": false,
+		"no-string-literal": false,
+		"jsx-self-close": false,
+		"no-namespace": false,
+		"no-trailing-whitespace": false,
+		"variable-name": [
+			true,
+			"ban-keywords",
+			"check-format",
+			"allow-leading-underscore",
+			"allow-pascal-case"
+		]
+	}
+}

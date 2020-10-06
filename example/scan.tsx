@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Instascan from "../src/index";
+import Instascan from "../src";
 
 interface RenderProps {
     onScan: (content: string) => void;
@@ -9,6 +9,12 @@ interface RenderProps {
 
 interface RenderState {
     loading: boolean;
+}
+
+const boxStyles = {
+    width: 300,
+    height: 300,
+    margin: "20px auto"
 }
 export default class QRScaner extends React.PureComponent<RenderProps, RenderState> {
 
@@ -39,8 +45,8 @@ export default class QRScaner extends React.PureComponent<RenderProps, RenderSta
 
     render() {
         return (
-            <div >
-                <video ref={this.previewer} />
+            <div style={boxStyles} >
+                <video height="100%" width="100%" style={{ border: "1px solid #ccc" }} ref={this.previewer} />
             </div>
         );
     }

@@ -1,0 +1,3 @@
+{
+  "extends": ["@ezbuy/stylelint-config-ezbuy"]
+}
