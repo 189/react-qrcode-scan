@@ -13,6 +13,8 @@
     "test": "father test",
     "now-build": "npm run build"
   },
+  "types": "lib/index.d.ts",
+  "type": "commonjs",
   "husky": {
     "hooks": {
       "pre-pubish": "npm run build",

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Instascan from "../src";
+import Instascan from "../dist/main.bundle";
 
 interface RenderProps {
     onScan: (content: string) => void;
