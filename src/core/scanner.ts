@@ -1,13 +1,15 @@
-// const EventEmitter = require("events");
+/**
+ * Core Code come from https://github.com/schmich/instascan
+ * Now I just rewrite again by typescript
+ * ZXing ("zebra crossing") is an open-source, multi-format 1D/2D barcode image processing library implemented in Java, with ports to other languages.
+ * You can get everything here https://github.com/zxing/zxing
+ */
 import { EventEmitter } from "events";
-const ZXing = require("./zxing")();
-// https://www.npmjs.com/package/visibilityjs
-// const Visibility = require("visibilityjs");
 import * as Visibility from "visibilityjs";
-// https://github.com/jakesgordon/javascript-state-machine
-// https://github.com/vstirbu/fsm-as-promised
 
 const StateMachine = require("fsm-as-promised");
+const ZXing = require("./zxing")();
+
 class ScanProvider {
 
   _active: boolean;
@@ -177,22 +179,6 @@ class Analyzer {
     return null;
   }
 }
-
-//         this.scanner = new Instascan.Scanner({ video: this.previewer.current });
-//         this.scanner.addListener("scan", (content) => {
-//             this.props?.onScan?.(content);
-//         });
-//         Instascan.Camera.getCameras()
-//             .then((cameras) => {
-//                 if (cameras.length > 0) {
-//                     this.scanner.start(cameras[0]);
-//                 } else {
-//                     this.props.onError("The camera is not recognized and the scan function cannot be used");
-//                 }
-//             })
-//             .catch((e) => {
-//                 this.props.onError(e.toString());
-//             });
 
 export interface ScanOptions {
   // The HTML element to use for the camera"s video preview. Must be a <video> element.
