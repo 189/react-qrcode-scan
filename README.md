@@ -30,7 +30,7 @@ export default class QRReader extends React.Component<RenderProps, RenderState> 
 ```
 
 > You can get full example code [Here](./example/scan.tsx)   
-> Or See [Live example](...)
+> Or See [Live example](https://189.github.io/react-qrcode-scan/dist/index.html)
 
 #### API
 
