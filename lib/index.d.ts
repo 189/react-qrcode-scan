@@ -26,6 +26,9 @@ export interface QRScanerProps {
     onStop?: () => void;
     onActive?: () => void;
     onInActive?: () => void;
+    style?: React.CSSProperties;
+    className?: string;
+    videoAttr?: React.VideoHTMLAttributes<any>;
 }
 export declare class QRScaner extends React.Component<QRScanerProps> {
     scanner: Scanner;

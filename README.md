@@ -45,16 +45,23 @@ react-qrcode-scan exports two component:
 
 Scanner Properties
 
-|      name         |         type      |                     description                   |
-|-------------------|-------------------|---------------------------------------------------|
-| camera            | object            | Camera object returned by \<Camera \/\>           |
-| options           | object            | Same options from [Instascan.Scanner](https://github.com/schmich/instascan#let-scanner--new-instascanscanneropts)|
-| stop              | boolean           | If stop is true the camera stops and vice-versa   |
-| onScan            | function          | Emitted when a QR code is scanned using the camera in continuous mode |
-| onStart           | function          | Called when camera is active and scanning has started |
-| onStop            | function          | Called when camera and scanning have stopped |
-| onActive          | function          | Emitted when the scanner becomes active as the result of stop becoming false or the tab gaining focus |
-| onInactive        | function          | Emitted when the scanner becomes inactive as the result of stop becoming true or the tab losing focus |
+|      name         |         type      |  required  |                     description                   |
+|-------------------|-------------------|------------|---------------------------------------------------|
+| camera            | object            |  true      | Camera object returned by \<Camera \/\>           |
+| onError           | (err:string) => volid     |  true   | Emitted when scan got error
+| onScan            | (content:string) => volid |  true   | Emitted when a QR code is scanned using the camera in continuous mode |
+| stop              | boolean                   |  false      | If stop is true the camera stops and vice-versa   |
+| onStart           | (camera) => volid         |  false     | Called when camera is active and scanning has started |
+| onStop            | () => volid               |  false      | Called when camera and scanning have stopped |
+| onActive          | function                  |  false     | Emitted when the scanner becomes active as the result of stop becoming false or the tab gaining focus |
+| onInactive        | () => volid               |  false     | Emitted when the scanner becomes inactive as the result of stop becoming true or the tab losing focus |
+| className         | string                    |  false     | classname, will be used for descript video tag |  
+| options           | object                    |  false     | Same options from [Instascan.Scanner][scanoption] |
+| style             | React.cssProperty         |  false     | inline styles, will be pass to video tag |
+| videoAttr         | React.VideoHTMLAttributes<any> | false | video tag attribute
+
+
+[scanoption]: https://github.com/schmich/instascan#let-scanner--new-instascanscanneropts
 
 For more details check the [Instascan API](https://github.com/schmich/instascan#api)
 

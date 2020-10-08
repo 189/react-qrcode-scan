@@ -53,6 +53,9 @@ export interface QRScanerProps {
     onStop?: () => void;
     onActive?: () => void;
     onInActive?: () => void;
+    style?: React.CSSProperties;
+    className?: string;
+    videoAttr?: React.VideoHTMLAttributes<any>;
 }
 
 export class QRScaner extends React.Component<QRScanerProps> {
@@ -97,7 +100,7 @@ export class QRScaner extends React.Component<QRScanerProps> {
     }
 
     render() {
-        return <video ref={this.previewer} />;
-        // return React.cloneElement(child as any, { ref: this.previewer });
+        const { videoAttr = {}, style, className } = this.props;
+        return <video className={className} style={style} {...videoAttr} ref={this.previewer} />;
     }
 }
