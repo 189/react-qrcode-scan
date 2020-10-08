@@ -53,12 +53,6 @@ module.exports = {
 			inlineSource: "runtime~main.*js$"
 		})
 	],
-	devServer: {
-		host: "localhost",
-		historyApiFallback: true,
-		port: 8899,
-		open: true
-	},
 	node: {
 		fs: "empty"
 	}
