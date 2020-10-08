@@ -10,6 +10,11 @@
     "compile": "node tools/builder.js --pro true",
     "format": "prettier --write"
   },
+  "files": [
+    "lib",
+    "dist",
+    "src"
+  ],
   "module": "lib/index.js",
   "husky": {
     "hooks": {
