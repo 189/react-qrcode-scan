@@ -1,12 +1,11 @@
 const path = require("path");
-const { tsRules, styleRules, imgRules } = require("./rules");
 const argv = require('minimist')(process.argv.slice(2));
 const pkg = require("../package.json");
 
 const { pro } = argv;
 
 module.exports = {
-	entry: path.resolve(__dirname, "../src/index.ts"),
+	entry: path.resolve(__dirname, "../src/index.tsx"),
 	resolve: {
 		extensions: [".webpack.js", ".tsx", ".ts", ".jsx", ".js", ".scss"],
 		modules: ["node_modules", "src"]
@@ -14,7 +13,7 @@ module.exports = {
 	resolveLoader: {
 		modules: ["node_modules", "src"]
 	},
-	devtool: pro ? false : "inline-sourcemap",
+	devtool: pro ? false : "eval-source-map",
 	mode: pro ? "production" : "development",
 	output: {
 		filename: "[name].bundle.js",
@@ -24,7 +23,13 @@ module.exports = {
 		umdNamedDefine: true
 	},
 	module: {
-		rules: [...imgRules, ...tsRules, ...styleRules]
+		rules: [
+			{
+				test: /.tsx?$/,
+				exclude: path.resolve("node_modules"),
+				use: [{ loader: "ts-loader", options: { transpileOnly: true } }]
+			},
+		]
 	},
 	externals: ["react", "react-dom"],
 	node: {

@@ -46,7 +46,7 @@ function compileWebpack() {
 }
 
 async function compile() {
-	await flush();
+	// await flush();
 	await compileWebpack();
 }
 

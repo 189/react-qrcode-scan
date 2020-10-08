@@ -31,7 +31,7 @@ module.exports = {
 				use: [{ loader: "ts-loader", options: { transpileOnly: true } }]
 			},
 			{
-				test: /\.(css|scss)$/,
+				test: /\.css$/,
 				use: [
 					{
 						loader: "style-loader"
@@ -39,16 +39,7 @@ module.exports = {
 					{
 						loader: "css-loader",
 						options: {
-							// minimize: true,
-							modules: true,
-							localIdentName: "[name]_[local]_[hash:base64:5]"
-						}
-					},
-					{
-						loader: "sass-loader",
-						options: {
-							outputStyle: "expanded",
-							sourceMap: true
+							modules: false,
 						}
 					}
 				]
@@ -70,5 +61,5 @@ module.exports = {
 	},
 	node: {
 		fs: "empty"
-	},
+	}
 };
