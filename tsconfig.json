@@ -4,7 +4,8 @@
 		"moduleResolution": "node",
 		"jsx": "react",
 		"target": "es5",
-		"allowJs": false,
+		// 允许编译javascript文件
+		"allowJs": true,
 		"allowUnreachableCode": true,
 		"module": "commonjs",
 		"experimentalDecorators": true,
@@ -26,6 +27,6 @@
 		// 生成相应的 .d.ts文件。
 		"declaration": true
 	},
-	"include": ["./src/**/*.ts", "./src/**/*.tsx", "./types/**.d.ts"],
+	"include": ["./src/**/*.ts", "./src/**/*.tsx", "./types/**.d.ts", "./src/**/*.js"],
 	"exclude": ["./node_modules/", "lib", "dist"]
 }

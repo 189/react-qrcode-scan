@@ -1,53 +1,61 @@
 import * as React from "react";
+import { QRScaner, Camera, CameraItem } from "../lib";
+import "./style.css";
 
-import Instascan from "../dist/main.bundle";
-
-interface RenderProps {
-    onScan: (content: string) => void;
-    onError: (message: string) => void;
-}
+interface RenderProps { }
 
 interface RenderState {
-    loading: boolean;
+    results: { date: number, content: string }[];
+    camera: CameraItem | null;
 }
 
-const boxStyles = {
-    width: 300,
-    height: 300,
-    margin: "20px auto"
-}
-export default class QRScaner extends React.PureComponent<RenderProps, RenderState> {
-
-    scanner: any;
-    previewer = React.createRef<HTMLVideoElement>();
-
-    componentDidMount() {
-        this.scanner = new Instascan.Scanner({ video: this.previewer.current });
-        this.scanner.addListener("scan", (content) => {
-            this.props?.onScan?.(content);
+export default class QRReader extends React.Component<RenderProps, RenderState> {
+    state: RenderState = {
+        results: [],
+        camera: null
+    };
+    onError = (message) => console.error(message);
+    onScan = (content) => {
+        const results = this.state.results;
+        results.unshift({
+            date: Date.now(),
+            content
         });
-        Instascan.Camera.getCameras()
-            .then((cameras) => {
-                if (cameras.length > 0) {
-                    this.scanner.start(cameras[0]);
-                } else {
-                    this.props.onError("The camera is not recognized and the scan function cannot be used");
-                }
-            })
-            .catch((e) => {
-                this.props.onError(e.toString());
-            });
+        this.setState({
+            results
+        });
     }
-
-    componentWillUnmount() {
-        this.scanner?.stop?.();
+    onStart = (camera) => {
+        this.setState({
+            camera
+        });
     }
-
     render() {
+        const { results, camera } = this.state;
         return (
-            <div style={boxStyles} >
-                <video height="100%" width="100%" style={{ border: "1px solid #ccc" }} ref={this.previewer} />
-            </div>
+            <Camera onError={this.onError}>
+                { cameras => cameras.length > 0 ?
+                    <div className="qrwrap">
+                        <div className="main">
+                            <h2>Scan QR Code</h2>
+                            <QRScaner onStart={this.onStart} onScan={this.onScan} camera={cameras[0]} onError={this.onError} />
+                        </div>
+                        <aside>
+                            <section>
+                                <h3>Camera:</h3>
+                                <div>{camera ? camera.name : ""}</div>
+                            </section>
+                            <section>
+                                <h3>Results:</h3>
+                                <ul>
+                                    {results.map(result => <li key={result.date}>{result.content}</li>)}
+                                </ul>
+                            </section>
+                        </aside>
+
+                    </div>
+                    : <div> No Camera</div>}
+            </Camera>
         );
     }
 }
