@@ -1,6 +1,6 @@
 {
   "name": "react-qrcode-scan",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React componnent write by typescript for scan qrcode base on instascan.js",
   "main": "lib/index.js",
   "scripts": {
