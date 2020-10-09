@@ -1,6 +1,6 @@
 {
   "name": "react-qrcode-scan",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "React componnent write by typescript for scan qrcode base on instascan.js",
   "main": "lib/index.js",
   "scripts": {
@@ -16,11 +16,7 @@
     "src"
   ],
   "module": "lib/index.js",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+  
   "lint-staged": {
     "*.{json,js,css}": [
       "npm run format",

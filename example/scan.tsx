@@ -14,7 +14,7 @@ export default class QRReader extends React.Component<RenderProps, RenderState> 
         results: [],
         camera: null
     };
-    onError = (message) => console.error(message);
+    onError = (err: Error) => alert(err.toString());
     onScan = (content) => {
         const results = this.state.results;
         results.unshift({

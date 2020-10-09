@@ -3,14 +3,6 @@ function cameraName(label: string | null) {
   return clean || label || null;
 }
 
-class MediaError extends Error {
-  type: string;
-  constructor(type: string) {
-    super(`Cannot access video stream (${type}).`);
-    this.type = type;
-  }
-}
-
 class Camera {
   id: string;
   name: string | null;
@@ -36,10 +28,7 @@ class Camera {
       }
     };
 
-    this._stream = await Camera._wrapErrors(async () => {
-      return await navigator.mediaDevices.getUserMedia(constraints);
-    });
-
+    this._stream = await navigator.mediaDevices.getUserMedia(constraints);
     return this._stream;
   }
 
@@ -68,24 +57,9 @@ class Camera {
 
   // Stop all video stream and prepare recording2
   static async _ensureAccess() {
-    return await this._wrapErrors(async () => {
-      let access = await navigator.mediaDevices.getUserMedia({ video: true });
-      for (let stream of access.getVideoTracks()) {
-        stream.stop();
-      }
-    });
-  }
-
-  static async _wrapErrors(fn: any) {
-    try {
-      return await fn();
-    } catch (e) {
-      console.log(e);
-      if (e.name) {
-        throw new MediaError(e.name);
-      } else {
-        throw e;
-      }
+    let access = await navigator.mediaDevices.getUserMedia({ video: true });
+    for (let stream of access.getVideoTracks()) {
+      stream.stop();
     }
   }
 }
