@@ -21,7 +21,7 @@ export interface QRScanerProps {
     stop?: boolean;
     options?: ScanOptions;
     onScan: (content: string) => void;
-    onError: (message: string) => void;
+    onError: (message: Error) => void;
     onStart?: (camera: CameraItem) => void;
     onStop?: () => void;
     onActive?: () => void;
