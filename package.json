@@ -44,7 +44,8 @@
 	"keywords": [
 		"react",
 		"qrcode",
-		"scan"
+		"scan",
+		"barcode"
 	],
 	"author": "189 <kv.wang87@gmail.com>",
 	"license": "ISC",

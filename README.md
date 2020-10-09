@@ -48,7 +48,7 @@ Scanner Properties
 |      name         |         type      |  required  |                     description                   |
 |-------------------|-------------------|------------|---------------------------------------------------|
 | camera            | object            |  true      | Camera object returned by \<Camera \/\>           |
-| onError           | (err:string) => volid     |  true   | Emitted when scan got error
+| onError           | (err:Error) => volid     |  true   | Emitted when scan got error
 | onScan            | (content:string) => volid |  true   | Emitted when a QR code is scanned using the camera in continuous mode |
 | stop              | boolean                   |  false      | If stop is true the camera stops and vice-versa   |
 | onStart           | (camera) => volid         |  false     | Called when camera is active and scanning has started |
