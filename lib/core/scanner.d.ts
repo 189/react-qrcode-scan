@@ -62,7 +62,7 @@ export default class Scanner extends EventEmitter {
         content: string;
         image?: string;
     };
-    start(camera?: any): Promise<void>;
+    start(camera?: any): Promise<any>;
     stop(): Promise<void>;
     set captureImage(capture: boolean);
     get captureImage(): boolean;
