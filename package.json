@@ -1,95 +1,97 @@
 {
-  "name": "react-qrcode-scan",
-  "version": "1.1.2",
-  "description": "React componnent write by typescript for scan qrcode base on instascan.js",
-  "main": "lib/index.js",
-  "scripts": {
-    "start": "run-p build:w build:example",
-    "build:example": "node tools/server.js",
-    "build:w": "node tools/builder.js --pro false",
-    "compile": "node tools/builder.js --pro true",
-    "format": "prettier --write"
-  },
-  "files": [
-    "lib",
-    "dist",
-    "src"
-  ],
-  "module": "lib/index.js",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{json,js,css}": [
-      "npm run format",
-      "git add"
-    ],
-    "*.scss": [
-      "npm run format",
-      "stylelint --fix --syntax scss",
-      "git add "
-    ],
-    "*.{ts,tsx}": [
-      "npm run format",
-      "tslint",
-      "git add"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/189/react-qrcode-scan.git"
-  },
-  "keywords": [
-    "react",
-    "qrcode",
-    "scan"
-  ],
-  "author": "189 <kv.wang87@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/189/react-qrcode-scan/issues"
-  },
-  "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  },
-  "dependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "@types/react": "^16.9.51",
-    "@types/react-dom": "^16.9.8",
-    "argv": "^0.0.2",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-polyfill": "^6.9.1",
-    "babel-preset-latest": "^6.24.1",
-    "classnames": "^2.2.6",
-    "commander": "^6.1.0",
-    "cross-env": "^7.0.0",
-    "css-loader": "^4.3.0",
-    "date-fns": "^2.16.1",
-    "fsm-as-promised": "^0.13.0",
-    "html-webpack-plugin": "^4.5.0",
-    "husky": "^1.3.1",
-    "lint-staged": "^7.2.0",
-    "minimist": "^1.2.5",
-    "np": "^6.0.0",
-    "npm-run-all": "^4.1.5",
-    "plainerror": "^1.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "style-loader": "^1.3.0",
-    "ts-loader": "^8.0.4",
-    "tslint": "^6.0.0",
-    "typescript": "^3.8.2",
-    "visibilityjs": "^1.2.3",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "2.7.1",
-    "webrtc-adapter": "^1.4.0"
-  },
-  "typings": "lib/index.d.ts",
-  "homepage": "https://github.com/189/react-qrcode-scan#readme"
+	"name": "react-qrcode-scan",
+	"version": "1.1.2",
+	"description": "React componnent write by typescript for scan qrcode base on instascan.js",
+	"main": "lib/index.js",
+	"scripts": {
+		"start": "run-p build:w build:example",
+		"build:example": "node tools/server.js",
+		"build:w": "node tools/builder.js --pro false",
+		"compile": "node tools/builder.js --pro true",
+		"format": "prettier --write"
+	},
+	"files": [
+		"lib",
+		"dist",
+		"src"
+	],
+	"module": "lib/index.js",
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{json,js,css}": [
+			"npm run format",
+			"git add"
+		],
+		"*.scss": [
+			"npm run format",
+			"stylelint --fix --syntax scss",
+			"git add "
+		],
+		"*.{ts,tsx}": [
+			"npm run format",
+			"tslint",
+			"git add"
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/189/react-qrcode-scan.git"
+	},
+	"keywords": [
+		"react",
+		"qrcode",
+		"scan"
+	],
+	"author": "189 <kv.wang87@gmail.com>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/189/react-qrcode-scan/issues"
+	},
+	"peerDependencies": {
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	},
+	"dependencies": {
+		"@babel/core": "^7.11.6",
+		"@babel/preset-env": "^7.11.5",
+		"@babel/preset-react": "^7.10.4",
+		"@types/react": "^16.9.51",
+		"@types/react-dom": "^16.9.8",
+		"argv": "^0.0.2",
+		"babel-plugin-external-helpers": "^6.22.0",
+		"babel-polyfill": "^6.9.1",
+		"babel-preset-latest": "^6.24.1",
+		"classnames": "^2.2.6",
+		"commander": "^6.1.0",
+		"cross-env": "^7.0.0",
+		"css-loader": "^4.3.0",
+		"date-fns": "^2.16.1",
+		"fsm-as-promised": "^0.13.0",
+		"html-webpack-plugin": "^4.5.0",
+		"husky": "^1.3.1",
+		"lint-staged": "^7.2.0",
+		"minimist": "^1.2.5",
+		"np": "^6.0.0",
+		"npm-run-all": "^4.1.5",
+		"open": "^7.3.0",
+		"plainerror": "^1.0.1",
+		"prettier": "^2.1.2",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"style-loader": "^1.3.0",
+		"ts-loader": "^8.0.4",
+		"tslint": "^6.0.0",
+		"typescript": "^3.8.2",
+		"visibilityjs": "^1.2.3",
+		"webpack": "^4.29.6",
+		"webpack-cli": "^3.3.0",
+		"webpack-dev-server": "2.7.1",
+		"webrtc-adapter": "^1.4.0"
+	},
+	"typings": "lib/index.d.ts",
+	"homepage": "https://github.com/189/react-qrcode-scan#readme"
 }
