@@ -16,7 +16,11 @@
     "src"
   ],
   "module": "lib/index.js",
-  
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{json,js,css}": [
       "npm run format",
